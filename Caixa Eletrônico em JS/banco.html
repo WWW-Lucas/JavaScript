@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BancoLuca's</title>
+</head>
+<body>
+    <script>
+
+function eTransferencia() {
+    var transf = parseInt(prompt("Informe o valor desejado: "));
+	var conta = parseInt(prompt("Informe a conta: "));
+			if (isNaN(conta) || conta === '' || conta <= 0) {
+				alert('Informe um número de conta válido');
+				eTransferencia();
+			} 
+			if (transf > saldo || isNaN(transf) || transf <= 0) {
+				alert("Não foi possível efetuar a Transferência");
+				return saldo;
+			}
+				saldo -= transf;
+				alert("Transferência efetuada com sucesso");
+				return saldo;
+}
+
+function password(){ //3589
+    var senha = prompt ('Informe a Senha:')
+        if(senha == '3589'){
+            alert('Ação Permitida')
+        } else {
+            alert('Ação Negada. Tente novamente.')
+            password();
+        }
+}
+
+    function cSaldo(saldo) {
+    alert(`Seu saldo atual é de R$${saldo}`);
+}
+
+function rDeposito(saldo, deposito) {
+    saldo += parseFloat(deposito);
+    alert('Deposito efetuado com sucesso!');
+    return saldo;
+}
+
+function rSaque(saldo, saque) {
+    saque = parseFloat(saque);
+
+    if (saque > saldo) {
+        alert('Não foi possível efetuar o saque');
+        return saldo;
+    }
+
+    saldo -= saque;
+    alert('Saque efetuado com sucesso!');
+    return saldo;
+}
+
+var saldo = 220.00;
+function home() {
+    var abertura = undefined;
+
+    do {
+        abertura = prompt('Qual operação deseja Realizar, ' + name + '?\n1 - Consultar Saldo\n2 - Consultar Extrato\n3 - Efetuar Saque\n4 - Efetuar Depósito \n5 - Efetuar Transferência \n6 - Sair');
+
+        if (abertura == null || abertura == "") {
+            break; 
+        }
+        //- A ordem das opções deve ser: Saldo, Extrato, Saque, Depósito, Transferência e Sair. 
+        switch (abertura) {
+            case '1':
+                password();
+                cSaldo(saldo);
+                break;
+            case '2':
+                password();
+                alert('Extrato de 2021 :\n\n Péricles -R$200.00\n Douglas -R$1.000\n Sara +R$400.00\n AMAZON -R$9,90\n Pizzaria Matarazzo -R$49.90 \n Agostinho +500.00\n Eduardo R$+1.000.000')
+                break;
+            case '3':
+                password();
+                var saque = prompt('Qual valor deseja Sacar?');
+                    saldo = rSaque(saldo, saque);
+                break;
+            case '4':
+                password();
+                var deposito = prompt('Qual valor deseja Depositar?');
+                saldo = rDeposito(saldo, deposito);
+                break;
+            case '5':
+                password();
+                eTransferencia();
+                break;
+            case '6':
+                alert(`${name}, foi um prazer ter você por aqui!`);
+                break;
+            default:
+                alert('Opção Inválida.');
+        }
+
+    } while (abertura != 6);
+}
+
+var name = prompt('Informe o seu nome') //vai pedir o nome, e recusará números
+            while (isNaN(name) == false){
+                var name = prompt('Favor, informe um Nome Válido!')
+            }
+            alert(`Olá, Seja Bem-Vindo, ${name}!`) 
+
+home(); 
+
+    </script>
+</body>
+</html>
